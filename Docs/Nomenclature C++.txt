@@ -1,0 +1,48 @@
+Règle de base
+Catégorie		Convention				Exemple
+Classes / Structs	PascalCase				EnemyController
+Fonctions		camelCase				takeDamage()
+Variables locales	camelCase				float damageAmount
+Variables membre	camelCase_ (underscore final)		float health_
+Pointeurs bruts membre	camelCase_ (même règle)			Enemy* target_
+Smart pointers membre	camelCase_ (même règle)			std::unique_ptr<Enemy> target_
+Booléens		préfixe is / has / can			bool isAlive_
+Constantes		ALL_CAPS				const int MAX_HEALTH
+Enums			classe PascalCase, valeurs PascalCase	EnemyState::Patrol
+Fichiers		PascalCase				EnemyController.cpp
+
+
+class EnemyController {
+public:
+    void takeDamage(float amount);
+    bool isAlive() const;
+
+private:
+    float                        health_;      // membre simple
+    bool                         isAlive_;     // booléen membre
+    Enemy*                       target_;      // pointeur brut (non-owning)
+    std::unique_ptr<Enemy>       ownedEnemy_;  // owning
+    std::shared_ptr<Enemy>       sharedEnemy_; // partagé
+    std::weak_ptr<Enemy>         observer_;    // observateur
+};
+
+
+// Pointeur brut  → tu n'es PAS propriétaire (tu observes)
+Enemy* target_;
+
+// unique_ptr     → tu es le SEUL propriétaire
+std::unique_ptr<Enemy> enemy_;
+
+// shared_ptr     → propriété PARTAGÉE (plusieurs owners)
+std::shared_ptr<Enemy> sharedEnemy_;
+
+// weak_ptr       → tu observes un shared_ptr sans posséder
+std::weak_ptr<Enemy> observer_;
+
+Exemples ✅ / ❌
+❌ Éviter			✅ Correct			Pourquoi
+pEnemy				enemy_				Hungarian notation obsolète
+m_health			health_				préfixe m_ vieilli
+EnemyController* ptr		std::unique_ptr<>		owning raw ptr dangereux
+enemy_controller		EnemyController			snake_case pour les classes = Godot/Python
+TakeDamage()			takeDamage()			PascalCase fonction = UE spécifique
