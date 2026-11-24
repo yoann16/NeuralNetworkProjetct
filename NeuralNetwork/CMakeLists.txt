@@ -4,9 +4,9 @@ set(_BMPEDITOR
 )
 
 set(_MLP
-  # ${CMAKE_CURRENT_SOURCE_DIR}/Security/Checksum.h
-  # ${CMAKE_CURRENT_SOURCE_DIR}/Security/ProtectionPolicy.h
-  # ${CMAKE_CURRENT_SOURCE_DIR}/Security/ProtectionPolicy.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/MLP/NeuralNetwork.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/MLP/Layers.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/MLP/Neuron.h
 )
 
 set(_TEST
