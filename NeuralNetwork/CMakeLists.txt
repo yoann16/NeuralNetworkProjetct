@@ -9,6 +9,11 @@ set(_MLP
   ${CMAKE_CURRENT_SOURCE_DIR}/MLP/Neuron.h
 )
 
+set(_UTILITY
+  ${CMAKE_CURRENT_SOURCE_DIR}/Utility/Utility.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/Utility/Utility.cpp
+)
+
 set(_TEST
   # ${CMAKE_CURRENT_SOURCE_DIR}/Test.h
   # ${CMAKE_CURRENT_SOURCE_DIR}/Test.cpp
@@ -18,12 +23,14 @@ add_executable(${CMAKE_PROJECT_NAME}
   main.cpp
   ${_BMPEDITOR}
   ${_MLP}
+  ${_UTILITY}
   ${_TEST}
 )
 
 source_group(TREE ${CMAKE_SOURCE_DIR} FILES
   ${_BMPEDITOR}
   ${_MLP}
+  ${_UTILITY}
   ${_TEST}
 )
 
