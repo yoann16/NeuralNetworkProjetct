@@ -4,6 +4,10 @@
 
 namespace MLP::Neuron 
 {
-
+	struct Neuron
+	{
+		float activation;
+		float bias;
+	};
 }
 #endif
