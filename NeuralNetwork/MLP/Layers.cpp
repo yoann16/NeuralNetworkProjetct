@@ -1,5 +1,10 @@
 #include "MLP/Layers.h"
 
+#include <print>
+
+#include "Utility/Utility.h"
+
+
 namespace MLP::Layers
 {
 	void Layer::activationLayer()
