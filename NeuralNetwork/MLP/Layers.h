@@ -10,9 +10,18 @@
 
 namespace MLP::Layers 
 {
-	struct Matrice
+	class Matrice
 	{
+	private:
 
+	public:
+		Matrice()
+		{ }
+
+		float findConnectionWeight(const MLP::Neuron::Neuron& inputNeuron, const MLP::Neuron::Neuron& outputNeuron)
+		{
+			return 0.0f;
+		}
 	};
 
 	struct Layer
@@ -22,24 +31,7 @@ namespace MLP::Layers
 		Matrice connectionWeights;
 		Layer* prevLayer = nullptr;
 
-		void activationLayer()
-		{
-			if (prevLayer == nullptr)
-			{
-				std::println("The layer has no preceding layer");
-				return;
-			}
-
-			for (auto& neuronIndex : neurons)
-			{
-				for (auto& prevLayerNeuronIndex : prevLayer->neurons)
-				{
-					neuronIndex.activation += prevLayerNeuronIndex.activation * connectionWeights;
-				}
-
-				neuronIndex.activation = sigmoid(neuronIndex.activation + neuronIndex.bias);
-			}
-		}
+		void activationLayer();
 	};
 }
 #endif
